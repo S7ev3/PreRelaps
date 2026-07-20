@@ -1283,7 +1283,7 @@ def main_app():
                 with c_lama1:
                     lama_val = st.number_input("Lama Pemakaian", 0, 100, 2)
                 with c_lama2:
-                    lama_unit = st.selectbox("Satuan", ["Tahun", "Bulan"])
+                    lama_unit = st.selectbox("Satuan", ["Bulan", "Tahun"])
                 
                 lama_pakai = lama_val if lama_unit == "Tahun" else lama_val / 12
                 lama_display = f"{lama_val} {lama_unit}"
