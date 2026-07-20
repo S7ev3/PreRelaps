@@ -1237,12 +1237,6 @@ def main_app():
     if st.sidebar.button("🚪 Log Out", key="logout_sidebar"):
         st.session_state["confirm_logout"] = True
 
-    # TOMBOL LOGOUT 2: DI HEADER KANAN ATAS APLIKASI
-    col_header1, col_header2 = st.columns([5, 1])
-    with col_header2:
-        if st.button("🚪 Log Out", key="logout_top", use_container_width=True):
-            st.session_state["confirm_logout"] = True
-
     # BILA TOMBOL LOGOUT DIKLIK, TAMPILKAN DIALOG KONFIRMASI DI ATAS
     if st.session_state["confirm_logout"]:
         show_logout_confirmation()
