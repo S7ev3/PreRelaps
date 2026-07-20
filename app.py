@@ -1182,6 +1182,17 @@ def evaluasi_page():
     # Format angka desimal agar rapi (4 angka di belakang koma standar jurnal ilmiah)
     st.dataframe(df_report.style.format(format_kolom), width="stretch")
 
+
+
+# --- FUNGSI LOGOUT (MEMBERSIHKAN SESSION STATE DAN KEMBALI KE LOGIN) ---
+def logout_user():
+    # Menghapus semua data sesi agar aman dan kembali ke tampilan login
+    st.session_state["loggedin"] = False
+    st.session_state["user_name"] = None
+    st.session_state["user_role"] = None
+    st.session_state["res"] = None
+    st.rerun()
+
 # --- 7. HALAMAN UTAMA (DENGAN LOGO KIRI ATAS) ---
 
 def main_app():
