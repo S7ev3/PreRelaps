@@ -1185,13 +1185,30 @@ def evaluasi_page():
 
 
 # --- FUNGSI LOGOUT (MEMBERSIHKAN SESSION STATE DAN KEMBALI KE LOGIN) ---
+# --- FUNGSI LOGOUT (MEMBERSIHKAN SESSION STATE DAN KEMBALI KE LOGIN) ---
 def logout_user():
     # Menghapus semua data sesi agar aman dan kembali ke tampilan login
     st.session_state["loggedin"] = False
     st.session_state["user_name"] = None
     st.session_state["user_role"] = None
     st.session_state["res"] = None
+    st.session_state["confirm_logout"] = False  # Reset konfirmasi
     st.rerun()
+
+
+# --- DIALOG KONFIRMASI LOGOUT ---
+def show_logout_confirmation():
+    st.warning("⚠️ **Apakah Anda yakin ingin keluar dari sistem?**")
+    col_confirm1, col_confirm2 = st.columns(2)
+    with col_confirm1:
+        if st.button(
+            "✅ Ya, Saya Yakin", type="primary", use_container_width=True
+        ):
+            logout_user()
+    with col_confirm2:
+        if st.button("❌ Batal", use_container_width=True):
+            st.session_state["confirm_logout"] = False
+            st.rerun()
 
 # --- 7. HALAMAN UTAMA (DENGAN LOGO KIRI ATAS) ---
 
